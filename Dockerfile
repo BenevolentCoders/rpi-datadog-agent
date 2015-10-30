@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     python-dev \
     python-pip \
     python-virtualenv \
-    sysstat && \
+    sysstat \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     sh -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/setup_agent.sh)"
