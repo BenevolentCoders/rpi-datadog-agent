@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 RUN mv ~/.datadog-agent/agent/datadog.conf.example ~/.datadog-agent/agent/datadog.conf \
     && sed -i -e"s/^.*non_local_traffic:.*$/non_local_traffic: yes/" ~/.datadog-agent/agent/datadog.conf \
     && sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" ~/.datadog-agent/agent/datadog.conf \
-    && sed -i "/user=dd-agent/d" ~/.datadog-agent/supervisord/supervisor.conf \
+    && sed -i "/user=dd-agent/d" ~/.datadog-agent/supervisord/supervisord.conf \
     && rm ~/.datadog-agent/agent/conf.d/network.yaml.default \
     && cp ~/.datadog-agent/agent/conf.d/docker_daemon.yaml.example ~/.datadog-agent/agent/conf.d/docker_daemon.yaml
 
