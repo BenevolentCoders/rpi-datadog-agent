@@ -1,8 +1,8 @@
 # rpi-datadog-agent
 
 [![Image Layers](https://badge.imagelayers.io/benevolentcoders/rpi-datadog-agent:latest.svg)](https://imagelayers.io/?images=benevolentcoders/rpi-datadog-agent:latest)
-[![Docker Stars](https://img.shields.io/docker/stars/benevolentcoders/rpi-datadog-agent.svg)][DockerHub]
-[![Docker Pulls](https://img.shields.io/docker/pulls/benevolentcoders/rpi-datadog-agent.svg)][DockerHub]
+[![Docker Stars](https://img.shields.io/docker/stars/benevolentcoders/rpi-datadog-agent.svg)][hub]
+[![Docker Pulls](https://img.shields.io/docker/pulls/benevolentcoders/rpi-datadog-agent.svg)][hub]
 
 Raspberry Pi compatible Docker base image the datadog agent preinstalled from source.
 
@@ -90,3 +90,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[hub]: https://registry.hub.docker.com/u/benevolentcoders/rpi-datadog-agent/
