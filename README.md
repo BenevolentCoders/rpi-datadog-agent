@@ -41,7 +41,6 @@ To enable integrations you can write your YAML configuration files in the `/conf
 
     _The important part here is `-v /opt/dd-agent-conf.d:/conf.d:ro`_
 
-
     Now when the container starts, all files in ``/opt/dd-agent-conf.d`` with a `.yaml` extension will be copied to `/etc/dd-agent/conf.d/`. Please note that to add new files you will need to restart the container.
 
 ### Build Details
