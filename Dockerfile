@@ -1,7 +1,6 @@
 # Pull base image
 FROM hypriot/rpi-alpine-scratch
 
-
 # Install datadog with dependencies
 # 1. basic tools
 # 2. python dependencies
@@ -30,14 +29,15 @@ RUN mv ~/.datadog-agent/agent/datadog.conf.example ~/.datadog-agent/agent/datado
      && sed -i -e"s/^.*non_local_traffic:.*$/non_local_traffic: yes/" ~/.datadog-agent/agent/datadog.conf \
      && sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" ~/.datadog-agent/agent/datadog.conf \
      && sed -i "/user=dd-agent/d" ~/.datadog-agent/supervisord/supervisord.conf \
-     && rm ~/.datadog-agent/agent/conf.d/network.yaml.default \
-     && cp ~/.datadog-agent/agent/conf.d/docker_daemon.yaml.example ~/.datadog-agent/agent/conf.d/docker_daemon.yaml
+     && rm ~/.datadog-agent/agent/conf.d/network.yaml.default
 
-#CMD sh -c "sed -i 's/api_key:.*/api_key: "$API_KEY"/' ~/.datadog-agent/agent/datadog.conf" &&  ~/.datadog-agent/bin/agent start
+# Extra conf.d
+CMD mkdir -p /conf.d
+VOLUME ["/conf.d"]
 
 # Add Docker check
-# COPY conf.d/docker_daemon.yaml ~/.datadog-agent/agent/conf.d/docker_daemon.yaml
-
+COPY conf.d/docker_daemon.yaml ~/.datadog-agent/agent/conf.d/docker_daemon.yaml
+# Add entrypoint
 COPY entrypoint.sh /entrypoint.sh
 
 # Expose DogStatsD port
