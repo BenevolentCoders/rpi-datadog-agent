@@ -4,6 +4,46 @@ Raspberry Pi compatible Docker base image the datadog agent preinstalled from so
 
 Run all the commands from within the project root directory.
 
+## Quick Start
+
+The default image is ready-to-go. You just need to set your hostname and API_KEY in the environment.
+
+```
+docker run -d --name dd-agent -h `hostname` -v /var/run/docker.sock:/var/run/docker.sock -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e API_KEY={your_api_key_here} datadog/docker-dd-agent
+```
+
+## Configuration
+
+### Environment variables
+
+A few parameters can be changed with environment variables.
+
+* `TAGS` set host tags. Add `-e TAGS="simple-tag-0,tag-key-1:tag-value-1"` to use [simple-tag-0, tag-key-1:tag-value-1] as host tags.
+* `LOG_LEVEL` set logging verbosity (CRITICAL, ERROR, WARNING, INFO, DEBUG). Add `-e LOG_LEVEL=DEBUG` to turn logs to debug mode.
+* `PROXY_HOST`, `PROXY_PORT`, `PROXY_USER` and `PROXY_PASSWORD` set the proxy configuration.
+* `DD_URL` set the Datadog intake server to send Agent data to (used when [using an agent as a proxy](https://github.com/DataDog/dd-agent/wiki/Proxy-Configuration#using-the-agent-as-a-proxy) )
+
+### Enabling integrations
+
+To enable integrations you can write your YAML configuration files in the `/conf.d` folder, they will automatically be copied to `/etc/dd-agent/conf.d/` when the container starts.
+
+1. Create a configuration folder on the host and write your YAML files in it.
+
+    ```
+    mkdir /opt/dd-agent-conf.d
+    touch /opt/dd-agent-conf.d/nginx.yaml
+    ```
+
+2. When creating the container, mount this new folder to `/conf.d`.
+    ```
+    docker run -d --name dd-agent -h `hostname` -v /var/run/docker.sock:/var/run/docker.sock -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -v /opt/dd-agent-conf.d:/conf.d:ro -e API_KEY={your_api_key_here} datadog/docker-dd-agent
+    ```
+
+    _The important part here is `-v /opt/dd-agent-conf.d:/conf.d:ro`_
+
+
+    Now when the container starts, all files in ``/opt/dd-agent-conf.d`` with a `.yaml` extension will be copied to `/etc/dd-agent/conf.d/`. Please note that to add new files you will need to restart the container.
+
 ### Build Details
 - [Source Project Page](https://github.com/benevolentcoders)
 - [Source Repository](https://github.com/benevolentcoders/rpi-datadog-agent)
