@@ -1,20 +1,14 @@
 # Pull base image
-FROM hypriot/rpi-alpine-scratch
+FROM benevolentcoders/rpi-python
 
 # Install datadog with dependencies
 # 1. basic tools
-# 2. python dependencies
 # 3. sysstat
 # 4. datadog agent from source
 RUN apk update \
     && apk upgrade \
     && apk add curl \
     tar \
-    musl \
-    python \
-    python-dev \
-    py-virtualenv \
-    py-pip \
     sysstat \
     && rm -rf /var/cache/apk/* \
     && DD_START_AGENT=0 sh -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/setup_agent.sh)"
