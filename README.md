@@ -1,5 +1,9 @@
 # rpi-datadog-agent
 
+[![Image Layers](https://badge.imagelayers.io/benevolentcoders/rpi-datadog-agent:latest.svg)](https://imagelayers.io/?images=benevolentcoders/rpi-datadog-agent:latest)
+[![Docker Stars](https://img.shields.io/docker/stars/benevolentcoders/rpi-datadog-agent.svg)][DockerHub]
+[![Docker Pulls](https://img.shields.io/docker/pulls/benevolentcoders/rpi-datadog-agent.svg)][DockerHub]
+
 Raspberry Pi compatible Docker base image the datadog agent preinstalled from source.
 
 Run all the commands from within the project root directory.
