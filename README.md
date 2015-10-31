@@ -8,7 +8,7 @@ Run all the commands from within the project root directory.
 - [Source Project Page](https://github.com/benevolentcoders)
 - [Source Repository](https://github.com/benevolentcoders/rpi-datadog-agent)
 - [Dockerfile](https://github.com/benevolentcoders/rpi-datadog-agent/blob/master/Dockerfile)
-- [DockerHub] (https://registry.hub.docker.com/u/benevolentcoders/rpi-datadog-agent/)
+- [DockerHub](https://registry.hub.docker.com/u/benevolentcoders/rpi-datadog-agent/)
 
 
 #### Build the Docker Image
